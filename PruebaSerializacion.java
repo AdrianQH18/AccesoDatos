@@ -22,20 +22,21 @@ public class PruebaSerializacion {
             return "Libro{titulo='" + titulo + "', autor='" + autor + "', anio=" + anio + '}';
         }
     }
-
+//Método que guardar la lista de libros serializando y escribiendo en un fichero
     public static void guardarLibros(List<Libro> libros, String fichero) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero))) {
-            oos.writeObject(libros);
+            oos.writeObject(libros); // Escribe el objeto de forma serializada en el archivo
             System.out.println("Lista de libros guardada en " + fichero);
         } catch (IOException e) {
             System.out.println("Error al guardar libros: " + e.getMessage());
         }
     }
 
-
+  // Método que carga la lista deserializando desde el fichero
     public static List<Libro> cargarLibros(String fichero) {
         List<Libro> libros = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichero))) {
+            // Lee la lista de libros deserializando el objeto
             libros = (List<Libro>) ois.readObject();
             System.out.println("Lista de libros cargada desde " + fichero);
         } catch (IOException | ClassNotFoundException e) {
@@ -52,17 +53,17 @@ public class PruebaSerializacion {
 
         String fichero = "libros.bin";
 
-
         guardarLibros(libros, fichero);
 
 
         List<Libro> librosRecuperados = cargarLibros(fichero);
 
-
+        // Si la carga fue exitosa, mostrar los libros
         if (librosRecuperados != null) {
             for (Libro libro : librosRecuperados) {
                 System.out.println(libro);
             }
         }
     }
+
 }
