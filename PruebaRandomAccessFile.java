@@ -3,8 +3,8 @@ import java.io.*;
 import java.util.Scanner;
 
 public class PruebaRandomAccessFile {
-    static final int TAMANIO = 20;// Define el tamaño del array
-    static final String FICHERO = "datos.bin";
+    static final int TAMANIO = 10;// Define el tamaño del array
+    static final String FICHERO = "Fichero.bin";
 
     public static void main(String[] args) {
         int[] datos = new int[TAMANIO];
@@ -22,7 +22,7 @@ public class PruebaRandomAccessFile {
                 System.out.println("Error leyendo el fichero: " + e.getMessage());
             }
         } else {
-            // Si no existe el fichero se crea con 20 enteros
+            // Si no existe el fichero se crea con 10 enteros
             try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(file))) {
                 for (int i = 0; i < TAMANIO; i++) {
                     dos.writeInt(0);
@@ -66,4 +66,5 @@ public class PruebaRandomAccessFile {
     }
 
 }
+
 
