@@ -32,7 +32,7 @@ public class PruebaRandomAccessFile {
                 System.out.println("Error creando y escribiendo fichero: " + e.getMessage());
             }
         }
-        // Abrimos el fichero para lectura y escritura aleatoria
+        // Abre el fichero en modo lectura y escritura
         try (RandomAccessFile raf = new RandomAccessFile(FICHERO, "rw");
              Scanner sc = new Scanner(System.in)) {
             // Muestra el contenido actual
@@ -43,7 +43,7 @@ public class PruebaRandomAccessFile {
                 }
                 System.out.println("\nIntroduce posición a modificar (negativo para salir): ");
                 int pos = sc.nextInt();
-                if (pos < 0) break;// si la posicion es negativa sale
+                if (pos < 0) break;// si la posicion es negativa sale del bucle
                 if (pos >= TAMANIO) {
                     System.out.println("Posición inválida.");
                     continue;// Pide otra posición válida
@@ -66,3 +66,4 @@ public class PruebaRandomAccessFile {
     }
 
 }
+
